@@ -12,7 +12,7 @@ repositories {
 }
 
 dependencies {
-    implementation("com.google.cloud.functions:functions-framework:2.10.0") // Or latest version
+//    implementation("com.google.cloud.functions:functions-framework:2.10.0") // Or latest version
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     testImplementation(kotlin("test"))
 }
@@ -25,5 +25,5 @@ kotlin {
 }
 
 application {
-    mainClass.set("com.example.helloworld.MainKt") // Replace with your main class
+    mainClass.set("com.example.MainKt") // Replace with your main class
 }
