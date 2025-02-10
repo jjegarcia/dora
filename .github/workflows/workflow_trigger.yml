@@ -5,7 +5,7 @@ env:
   PROJECT_ID: 'dora-450207' # TODO: update to your Google Cloud project ID
   REGION: 'us-central1' # TODO: update to your region
   SERVICE: 'my-service' # TODO: update to your service name
-  WORKLOAD_IDENTITY_PROVIDER: '${{ env.WORKLOAD_IDENTITY_PROVIDER }}' # TODO: update to your workload identity provider
+  WORKLOAD_IDENTITY_PROVIDER: '${{ WORKLOAD_IDENTITY_PROVIDER }}' # TODO: update to your workload identity provider
 
 jobs:
   deploy:
@@ -27,7 +27,7 @@ jobs:
         name: 'Authenticate to Google Cloud'
         uses: google-github-actions/auth@v2
         with:
-          workload_identity_provider: '${{ env.WORKLOAD_IDENTITY_PROVIDER }}'
+          workload_identity_provider: '${{ WORKLOAD_IDENTITY_PROVIDER }}'
 
       # BEGIN - Docker auth and build
       #
