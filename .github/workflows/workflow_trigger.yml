@@ -46,7 +46,7 @@ jobs:
         run: |-
           # DOCKER_TAG='us-central1-docker.pkg.dev/dora-450207/my-service:280f19ae91c7d61b2bd211d1529f094318108128'
           docker build --tag ${{ env.DOCKER_TAG }} .
-          docker push {{ env.DOCKER_TAG }}
+          docker push ${{ env.DOCKER_TAG }}
           
       - name: 'Deploy to Cloud Run'
 
