@@ -27,7 +27,7 @@ jobs:
         name: 'Authenticate to Google Cloud'
         uses: google-github-actions/auth@v2
         with:
-          credentials_json: '${{ secrets.WORKLOAD_IDENTITY_PROVIDER }}'
+          credentials_json: '${{ secrets.DORA_NEW_SECRET }}'
 
       # BEGIN - Docker auth and build
       #
