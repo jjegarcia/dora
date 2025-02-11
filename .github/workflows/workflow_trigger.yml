@@ -3,6 +3,7 @@ on:
   workflow_dispatch:
 env:
   PROJECT_ID: 'dora-450207' # TODO: update to your Google Cloud project ID
+  GAR_NAME: 'cloud-run-source-deploy'
   REGION: 'us-central1' # TODO: update to your region
   SERVICE: 'my-service' # TODO: update to your service name
   WORKLOAD_IDENTITY_PROVIDER: '${{ secrets.DORA_NEW_SECRET }}' # TODO: update to your workload identity provider
@@ -32,11 +33,13 @@ jobs:
       #
       # If you already have a container image, you can omit these steps.
       - name: 'Docker Auth'
-        uses:  docker/login-action@v3
-        with:
-          username: 'oauth2accesstoken'
-          password: '${{ steps.auth.outputs.auth_token }}'
-          registry: '${{ env.REGION }}-docker.pkg.dev'
+        # uses:  docker/login-action@v3
+        # with:
+        #   username: 'oauth2accesstoken'
+        #   password: '${{ steps.auth.outputs.auth_token }}'
+        #   registry: '${{ env.REGION }}-docker.pkg.dev'
+        run: |-
+          gcloud auth configure-docker '${{ env.GAR_NAME }}-docker-pkg.dev'
 
       - name: 'Build and Push Container'
         run: |-
