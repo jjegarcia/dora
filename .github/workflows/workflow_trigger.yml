@@ -7,6 +7,7 @@ env:
   REGION: 'us-central1' # TODO: update to your region
   SERVICE: 'my-service' # TODO: update to your service name
   WORKLOAD_IDENTITY_PROVIDER: '${{ secrets.DORA_NEW_SECRET }}' # TODO: update to your workload identity provider
+  DOCKER_TAG: 'us-central1-docker.pkg.dev/dora-450207/my-service:280f19ae91c7d61b2bd211d1529f094318108128'
 
 jobs:
   deploy:
@@ -43,12 +44,9 @@ jobs:
 
       - name: 'Build and Push Container'
         run: |-
-          # DOCKER_TAG= "${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.SERVICE }}:${{ github.sha }}"
-          # docker build --tag "${DOCKER_TAG}" .
-          # docker push "${DOCKER_TAG}"
-          DOCKER_TAG='us-central1-docker.pkg.dev/dora-450207/my-service:280f19ae91c7d61b2bd211d1529f094318108128'
-          docker build --tag '$DOCKER_TAG' .
-          docker push "$DOCKER_TAG"
+          # DOCKER_TAG='us-central1-docker.pkg.dev/dora-450207/my-service:280f19ae91c7d61b2bd211d1529f094318108128'
+          docker build --tag ${{ env.DOCKER_TAG }}  .
+          docker push "$${{ env.DOCKER_TAG }}"
           
       - name: 'Deploy to Cloud Run'
 
