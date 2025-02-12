@@ -4,7 +4,7 @@ on:
 env:
   PROJECT_ID: 'dora-450207' # TODO: update to your Google Cloud project ID
   GAR_NAME: 'cloud-run-source-deploy'
-  REGION: 'us-central1' # TODO: update to your region
+  REGION: 'poooo-central1' # TODO: update to your region
   SERVICE: 'cloud-run-source-deploy' # TODO: update to your service name
   WORKLOAD_IDENTITY_PROVIDER: '${{ secrets.DORA_NEW_SECRET }}' # TODO: update to your workload identity provider
   # DOCKER_TAG: us-central1-docker.pkg.dev/dora-450207/cloud-run-source-deploy:280f19ae91c7d61b2bd211d1529f094318108128
